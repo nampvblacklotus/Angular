@@ -1,0 +1,28 @@
+<table class="table table-bordered border border-primary table-striped mt-3">
+  <caption align="top" class="bg-warning p-2">DANH SÁCH NHÂN VIÊN</caption>
+  <thead>
+    <tr>
+      <th> id </th>
+      <th> Họ tên</th>
+      <th> Ngày sinh </th>
+      <th> Phái</th>
+      <th> Khu vực</th>
+      <th>Sửa</th>
+      <th> Xóa</th>
+    </tr>
+  </thead>
+  <thead>
+    <tr *ngFor="let nv of listNV">
+      <td> {{nv.id}} </td>
+      <td> {{nv.ho}} {{nv.ten}}</td>
+      <td> {{nv.ngaysinh | date:'dd/MM/yyyy'}}</td>
+      <td> {{nv.phai === true ? 'Nam' : 'Nữ' }}</td>
+      <td> {{nv.khuvuc}}</td>
+      <td>
+        <a href="" [routerLink]="['/nhanvien/sua', nv.id]" class="btn btn-primary btn-sm">Sửa</a>
+      </td>
+      <td><a (click)="xoaNV(nv.id)" class="btn btn-danger btn-sm">Xóa</a></td>
+    </tr>
+  </thead>
+
+</table>

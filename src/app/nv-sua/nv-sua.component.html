@@ -1,0 +1,38 @@
+<form class="mt-3" *ngIf="nhanVien" (ngSubmit)="capnhatNV()" #nhanVienForm="ngForm">
+    <h5 class="bg-warning p-2">Sửa nhân viên</h5>
+    <div class="mb-3">
+        <label for="nameho">Ho Nhan Vien</label>
+        <input name="ho" id="nameho" required [(ngModel)]="nhanVien.ho" class="form-control" minlength="1">
+        <div *ngIf="nhanVienForm.form.controls['ho']?.invalid && (nhanVienForm.form.controls['ho'].dirty || nhanVienForm.form.controls['ho'].touched)" class="text-danger">Chưa Nhập Ho Nhân Viên</div>
+    </div>
+    <div class="mb-3">
+        <label for="name">Tên Nhan Vien</label>
+        <input name="ten" id="name" required [(ngModel)]="nhanVien.ten" class="form-control" minlength="1">
+        <div *ngIf="nhanVienForm.form.controls['ten']?.invalid && (nhanVienForm.form.controls['ten'].dirty || nhanVienForm.form.controls['ten'].touched)" class="text-danger">Chưa Nhập Tên Nhân Viên</div>
+    </div>
+    <div class="mb-3">
+        <label for="birthday">Ngày Sinh</label>
+        <input name="ngaysinh" id="birthday" required [(ngModel)]="nhanVien.ngaysinh" class="form-control">
+        <div *ngIf="nhanVienForm.form.controls['ngaysinh']?.invalid && (nhanVienForm.form.controls['ngaysinh'].dirty || nhanVienForm.form.controls['ngaysinh'].touched)" class="text-danger">Chưa Nhập Ngày Sinh</div>
+    </div>
+    <div class="mb-3">
+        <label for="phai">Phái</label>
+        <select name="phai" id="phai" [(ngModel)]="nhanVien.phai" class="form-control" required>
+            <option [ngValue]="true">Nam</option>
+            <option [ngValue]="false">Nữ</option>
+        </select>
+        <div *ngIf="nhanVienForm.form.controls['phai']?.invalid && (nhanVienForm.form.controls['phai'].dirty || nhanVienForm.form.controls['phai'].touched)" class="text-danger">Chưa chọn Phái</div>
+    </div>
+    <div class="mb-3">
+        <label for="khuvuc">Khu Vực</label>
+        <select name="khuvuc" id="khuvuc" [(ngModel)]="nhanVien.khuvuc" class="form-control" required>
+            <option value="Bắc">Bắc</option>
+            <option value="Trung">Trung</option>
+            <option value="Nam">Nam</option>
+        </select>
+        <div *ngIf="nhanVienForm.form.controls['khuvuc']?.invalid && (nhanVienForm.form.controls['khuvuc'].dirty || nhanVienForm.form.controls['khuvuc'].touched)" class="text-danger">Chưa chọn Khu Vực</div>
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary p-2" type="submit" [disabled]="!nhanVienForm.form.valid">Sửa nhân viên</button>
+    </div>
+</form>

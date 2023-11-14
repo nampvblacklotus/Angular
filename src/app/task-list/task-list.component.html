@@ -1,0 +1,32 @@
+<table class="table table-bordered border border-primary table-striped mt-3">
+  <caption align="top" class="bg-warning p-2">DANH SÁCH Task</caption>
+  <thead>
+    <tr>
+      <th> Tên Task </th>
+      <th> Mô tả</th>
+      <th> Nhân Viên Thực Hiện</th>
+      <th> Dự Án</th>
+      <th> Priority</th>
+      <th> Status</th>
+      <th>Sửa</th>
+      <th> Xóa</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of listTask">
+      <td> {{task.tenTask}} </td>
+      <td> {{task.moTa}}</td>
+      <td> {{findNhanVienName(task.nhanvienID)}}</td>
+      <td>{{findDuAn(task.duAnID)}}</td>
+      <td> {{task.priority === 1 ? 'Ưu Tiên' : 'Không Ưu Tiên'}}</td>
+      <td> {{task.status === 0 ? 'Hoàn thành' : 'Chưa hoàn thành'}}</td>
+      <td>
+        <a href="" [routerLink]="['/task/sua', task.id]" class="btn btn-primary btn-sm">Sửa</a>
+      </td>
+      <td>
+        <a (click)="xoaTask(task.id)" class="btn btn-danger btn-sm">Xóa</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

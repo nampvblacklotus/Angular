@@ -1,0 +1,27 @@
+<div *ngIf="duAn" class=" mt-3">
+    <h2 class="bg-warning p-2">Chi tiết dự án:</h2>
+    <div class="row">
+      <div class="col">
+        <p><strong>Tên Dự Án:</strong> {{ duAn.tenDuAn }}</p>
+        <p><strong>ID Dự Án:</strong> {{ duAn.id }}</p>
+        <p><strong>Ngày Start:</strong> {{ duAn.ngayStart | date:'dd/MM/yyyy'}}</p>
+        <p><strong>Tiền:</strong> {{ duAn.tien | currency:'VND'}}</p>
+        <p><strong>Leader:</strong> {{ findNhanVienName(duAn.leader) }}</p>
+      </div>
+      <div class="col">
+        <p><strong>Thành viên dự án:</strong></p>
+        <ul>
+          <li *ngFor="let thanhvien of duAn.thanhvien">
+            {{ findNhanVienName(thanhvien) }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="!duAn" class="container mt-3">
+    <div class="alert alert-danger" role="alert">
+      Dự án không tồn tại hoặc không tìm thấy.
+    </div>
+  </div>
+  

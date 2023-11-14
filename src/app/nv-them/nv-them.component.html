@@ -1,0 +1,31 @@
+<form class="mt-3" (ngSubmit)="themNhanVien()" #nhanVienForm="ngForm">
+    <h5 class="bg-warning p-2">Thêm nhân viên</h5>
+    <div class="mb-3">
+        <label for="nameho">Họ Nhân Viên</label>
+        <input name="nameho" id="nameho" required [(ngModel)]="newNV.ho" class="form-control" >
+        <div *ngIf="nhanVienForm.form.controls['nameho']?.invalid && (nhanVienForm.form.controls['nameho'].dirty || nhanVienForm.form.controls['nameho'].touched)" class="text-danger">Chưa Nhập Họ Nhân Viên</div>
+    </div>
+    <div class="mb-3">
+        <label for="ten">Tên Nhân Viên</label>
+        <input name="ten" id="ten" required [(ngModel)]="newNV.ten" class="form-control" >
+        <div *ngIf="nhanVienForm.form.controls['ten']?.invalid && (nhanVienForm.form.controls['ten'].dirty || nhanVienForm.form.controls['ten'].touched)" class="text-danger">Chưa Nhập Tên Nhân Viên</div>
+    </div>
+    <div class="mb-3">
+        <label for="ngaysinh">Ngày Sinh</label>
+        <input name="ngaysinh" id="ngaysinh" required [(ngModel)]="newNV.ngaysinh" class="form-control">
+        <div *ngIf="nhanVienForm.form.controls['ngaysinh']?.invalid && (nhanVienForm.form.controls['ngaysinh'].dirty || nhanVienForm.form.controls['ngaysinh'].touched)" class="text-danger">Chưa Nhập Ngày Sinh</div>
+    </div>
+    <div class="mb-3">
+        <label for="phai">Phái</label>
+        <input name="phai" id="phai" required [(ngModel)]="newNV.phai" class="form-control" >
+        <div *ngIf="nhanVienForm.form.controls['phai']?.invalid && (nhanVienForm.form.controls['phai'].dirty || nhanVienForm.form.controls['phai'].touched)" class="text-danger">Chưa Nhập Phái</div>
+    </div>
+    <div class="mb-3">
+        <label for="khuvuc">Khu vực</label>
+        <input name="khuvuc" id="khuvuc" required [(ngModel)]="newNV.khuvuc" class="form-control" >
+        <div *ngIf="nhanVienForm.form.controls['khuvuc']?.invalid && (nhanVienForm.form.controls['khuvuc'].dirty || nhanVienForm.form.controls['khuvuc'].touched)" class="text-danger">Chưa Nhập Khu Vực</div>
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary p-2" type="submit" [disabled]="!nhanVienForm.form.valid"> Thêm Nhân Viên</button>
+    </div>
+</form>

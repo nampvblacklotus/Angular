@@ -1,0 +1,31 @@
+<table class="table table-bordered border border-primary table-striped mt-3">
+  <caption align="top" class="bg-warning p-2">DANH SÁCH DỰ ÁN</caption>
+  <tr>
+    <th> id </th>
+    <th> Tên dự án</th>
+    <th>Leader</th>
+    <th> Ngày start</th>
+    <th> Tiền</th>
+    <th>Chi Tiết</th>
+    <th>Sửa</th>
+    <th>Xóa</th>
+    
+  </tr>
+  <tr *ngFor="let da of listDA">
+    <td> {{da.id}} </td>
+    <td> {{da.tenDuAn}}</td>
+    <td>{{findNhanVienName(da.leader)}}</td>
+    <td> {{da.ngayStart | date:'dd/MM/yyyy'}}</td>
+    <td> {{da.tien | currency:'VND'}} </td>
+    <td><a href="" [routerLink]="['/duan/chitietduan', da.id]"><i class="fa-solid fa-eye" style="color: black;"></i></a></td>
+    <td>
+      <a href="" [routerLink]="['/duan/sua', da.id]"><i class="fa-solid fa-wrench" style="color: black;"></i></a>
+      
+    </td>
+    <td>
+      <a style="cursor: pointer;" (click)="xoaDA(da.id)"><i class="fa-solid fa-trash" ></i></a>
+    </td>
+    
+  </tr>
+</table>
+

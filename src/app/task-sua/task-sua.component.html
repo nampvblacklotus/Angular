@@ -1,0 +1,46 @@
+<form class="mt-3" *ngIf="Task" (ngSubmit)="capnhatTask()" #taskForm="ngForm">
+    <h5 class="bg-warning p-2">Sửa TASK</h5>
+    <div class="mb-3">
+        <label for="taskname">Tên task</label>
+        <input name="tenTask" id="taskname" [(ngModel)]="Task.tenTask" class="form-control" required minlength="1">
+        <div *ngIf="taskForm.form.controls['tenTask']?.invalid && (taskForm.form.controls['tenTask'].dirty || taskForm.form.controls['tenTask'].touched)" class="text-danger">Chưa Nhập Tên Task</div>
+    </div>
+    <div class="mb-3">
+        <label for="taskdescrip">Mô tả</label>
+        <textarea name="moTa" id="taskdescrip" [(ngModel)]="Task.moTa" class="form-control" required minlength="1"></textarea>
+        <div *ngIf="taskForm.form.controls['moTa']?.invalid && (taskForm.form.controls['moTa'].dirty || taskForm.form.controls['moTa'].touched)" class="text-danger">Chưa Nhập Mô tả</div>
+    </div>
+    <div class="mb-3">
+        <label for="taskDA">Dự án</label>
+        <select name="duAnID" id="taskDA" [(ngModel)]="Task.duAnID" class="form-control" required #duAnID="ngModel">
+            <option *ngFor="let option of listDA" [value]="option.id">{{ option.tenDuAn }}</option>
+        </select>
+        <div *ngIf="duAnID?.invalid && (duAnID.dirty || duAnID.touched)" class="text-danger">Chưa chọn Dự án</div>
+    </div>
+    <div class="mb-3">
+        <label for="taskNV">Người thực hiện</label>
+        <select name="nhanvienID" id="taskNV" [(ngModel)]="Task.nhanvienID" class="form-control" required #nhanvienID="ngModel">
+            <option *ngFor="let option of listNV" [value]="option.id">{{ option.ho }} {{ option.ten }}</option>
+        </select>
+        <div *ngIf="nhanvienID?.invalid && (nhanvienID.dirty || nhanvienID.touched)" class="text-danger">Chưa chọn Người thực hiện</div>
+    </div>
+    <div class="mb-3">
+        <label for="taskPriority">Độ ưu tiên</label>
+        <select name="priority" id="taskPriority" [(ngModel)]="Task.priority" class="form-control" required #priority="ngModel">
+            <option value="1">Ưu Tiên</option>
+            <option value="2">Không Ưu Tiên</option>
+        </select>
+        <div *ngIf="priority?.invalid && (priority.dirty || priority.touched)" class="text-danger">Chưa chọn Độ ưu tiên</div>
+    </div>
+    <div class="mb-3">
+        <label for="taskstatus">Trạng thái</label>
+        <select name="status" id="taskstatus" [(ngModel)]="Task.status" class="form-control" required #status="ngModel">
+            <option value="0">Hoàn Thành</option>
+            <option value="1">Chưa Hoàn Thành</option>
+        </select>
+        <div *ngIf="status?.invalid && (status.dirty || status.touched)" class="text-danger">Chưa chọn Trạng thái</div>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary p-2" [disabled]="!taskForm.form.valid">Sửa Task</button>
+    </div>
+</form>
